@@ -77,9 +77,9 @@ const Home = () => {
     }
 
     const handleCustomAmountSubmit=async()=>{
-        if(customAmount < scheduledRepayments[curridx].amount){
-            alert("custom amount must be greater tha equal to outstanding amount");
-        }
+        // if(customAmount < scheduledRepayments[curridx].amount){
+        //     alert("custom amount must be greater tha equal to outstanding amount");
+        // }
         try{
             const res = await axiosInstance.post("/customer/customrepay",{"id":scheduledRepayments[curridx].id,"amount":customAmount});
             if(res.status == 200){

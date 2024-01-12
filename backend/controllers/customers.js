@@ -5,7 +5,7 @@ const requestLoan = async(req,res)=>{
         const {amount,status,term} = req.body;
         const usrid = req.user.id;
         console.log(usrid)
-        let todayDate = new Date().toISOString().slice(0, 10);
+        let todayDate = new Date();
         await Loan.create({
             userid:usrid,
             amount:amount,
@@ -31,9 +31,9 @@ const repay = async(req,res)=>{
     let trm = lon.term;
     amt -= parseInt(amt/trm);
     trm -= 1;
-    let d = new Date();
+    let d = new Date(Date.parse(lon.date));
     d.setDate(d.getDate()+7);
-    let nextdate = d.toISOString().slice(0, 10);
+    let nextdate=d.toISOString().slice(0, 19).replace('T', ' ');
     try{
         if(trm == 0){
             await lon.update({amount: amt,term: trm,status:"PAID",date:nextdate});   
@@ -61,12 +61,12 @@ const customrepay=async(req,res)=>{
     let trm = lon.term;
     amt -= amount;
     trm -= 1;
-    let d = new Date();
+    let d = new Date(Date.parse(lon.date));
     d.setDate(d.getDate()+7);
-    let nextdate = d.toISOString().slice(0, 10);
+    let nextdate =d.toISOString().slice(0, 19).replace('T', ' ');
     try{
         if(trm == 0 || amt <= 0){
-            await lon.update({amount: amt,term: trm,status:"PAID"});   
+            await lon.update({amount: amt,term: trm,status:"PAID",date:nextdate});   
         } else {
             await lon.update({amount: amt,term: trm,date:nextdate});
         }

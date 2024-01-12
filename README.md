@@ -14,8 +14,8 @@ This project is a simple mini-loan application that allows users to apply for lo
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/mini-loan-app.git
-   cd mini-loan-app
+   git clone https://github.com/hemansh/mini-loan
+   cd mini-loan
 2. **Install dependencies for both frontend and backend:**
     ```bash
     # Install backend dependencies

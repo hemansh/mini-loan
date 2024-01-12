@@ -160,7 +160,7 @@ const Home = () => {
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
                             {scheduledRepayments.map((repayment, index) => (
-                                repayment.status === 'APR' && (
+                                (repayment.status === 'APR' || repayment.status == 'REQ') && (
                                     <tr key={index}>
                                     <td className="px-6 py-4 whitespace-nowrap">{repayment.date.slice(0, 10)}</td>
                                     <td className="px-6 py-4 whitespace-nowrap">${repayment.amount}</td>

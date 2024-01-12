@@ -6,7 +6,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate()
-    const handleLogin = async()=>{
+    const handleLogin = async () => {
         const data = {
             username: email,
             password: password
@@ -14,17 +14,17 @@ const Login = () => {
 
         const conf = {
             Headers: {
-                'Content-Type':'application/json'
+                'Content-Type': 'application/json'
             }
         };
         console.log(data);
-        try{
-            const res = await axiosInstance.post('/auth/login',data,conf);
-            if(res.status === 200){
+        try {
+            const res = await axiosInstance.post('/auth/login', data, conf);
+            if (res.status === 200) {
                 navigate("/home");
                 // alert("Login success");
             }
-        } catch(err){
+        } catch (err) {
             alert("login unsuccessful")
         }
     }
@@ -48,13 +48,12 @@ const Login = () => {
                                 Password
                             </label>
                             <input type="password" id="password" onChange={(e) => setPassword(e.target.value)}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
                             <div className="items-center  flex flex-col">
-                                <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={()=>{handleLogin();}}>Sign In</button>
+                                <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={() => { handleLogin(); }}>Sign In</button>
+                                <p>Don't have an account? <button className='text-blue-700' onClick={()=>{navigate('/signup')}}>Sign up</button></p>
                             </div>
                         </div>
-
-
                     </form>
                 </div>
             </div>}

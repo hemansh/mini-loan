@@ -78,6 +78,7 @@ const SignUp = () => {
                         Sign Up
                     </button>
                 </form>
+                <p>have an account? <button className='text-blue-700' onClick={()=>{navigate('/login')}}>Sign In</button></p>
             </div>
         </div>
     );

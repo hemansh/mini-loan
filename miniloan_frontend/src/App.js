@@ -6,6 +6,7 @@ import Home from './pages/home/home.jsx'
 import SignUp from './pages/signup/signup.jsx';
 import AdminLogin from './pages/admin/adminlogin/login.jsx';
 import Dashboard from './pages/admin/admindashboard/dashboard.jsx';
+import LoanHistory from './pages/history/loanhistory.jsx'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route exact path='/signup' element={<SignUp/>}/>
             <Route exact path='/admin/login' element={<AdminLogin/>}/>
             <Route exact path='/admin/dashboard' element={<Dashboard/>}/>
+            <Route exact path='/loanhistory' element={<LoanHistory/>}/>
         </Routes>
     </>
   );

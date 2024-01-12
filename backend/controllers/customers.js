@@ -88,4 +88,10 @@ const getloans = async(req,res)=>{
     return res.json(usr).status(200);
 }
 
-module.exports = {requestLoan,repay,getloans,customrepay};
+const getPaidLoans = async(req,res)=>{
+    const usrid = req.user.id;
+    const ln = await Loan.findAll({where:{status:'PAID',userid:usrid}});
+    return res.json(ln).status(200);
+}
+
+module.exports = {requestLoan,repay,getloans,customrepay,getPaidLoans};

@@ -88,6 +88,7 @@ const Home = () => {
                 handleCloseCustomAmountModal();
             }
         } catch(err){
+            if(err.re)
             console.log(err);
         }
     }
@@ -133,6 +134,11 @@ const Home = () => {
                     Submit Loan Request
                 </button>
 
+                <button
+                    className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 ml-2" onClick={() => { navigate('/loanhistory') }}>
+                    Loan History
+                </button>
+
                 <div className="mt-8">
                     <h3 className="text-lg font-semibold mb-4">Scheduled Repayments</h3>
                     <table className="min-w-full divide-y divide-gray-200">
@@ -154,7 +160,8 @@ const Home = () => {
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
                             {scheduledRepayments.map((repayment, index) => (
-                                <tr key={index}>
+                                repayment.status === 'APR' && (
+                                    <tr key={index}>
                                     <td className="px-6 py-4 whitespace-nowrap">{repayment.date.slice(0, 10)}</td>
                                     <td className="px-6 py-4 whitespace-nowrap">${repayment.amount}</td>
                                     <td className="px-6 py-4 whitespace-nowrap">{util(repayment.status)}</td>
@@ -168,6 +175,8 @@ const Home = () => {
                                         )}
                                     </td>
                                 </tr>
+                                )
+                                
                             ))}
                         </tbody>
                     </table>

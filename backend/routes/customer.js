@@ -97,4 +97,6 @@ router.get('/getloans',loan.getloans);
  */
 router.post('/customrepay',loan.customrepay);
 
+router.get('/getpaidloans',loan.getPaidLoans);
+
 module.exports = router;
